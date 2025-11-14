@@ -22,15 +22,6 @@
         text-align: center;
     }
 
-    iframe {
-        width: 100%;
-        max-width: 720px;
-        height: 405px;
-        border-radius: 12px;
-        border: 3px solid rgba(255,255,255,0.5);
-        margin-bottom: 20px;
-    }
-
     .thumbnails {
         display: flex;
         flex-wrap: wrap;
@@ -62,34 +53,6 @@
         color: #fff;
     }
 
-    .controls {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .download {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #fff;
-        border: none;
-        background: #ff6b6b;
-        transition: background 0.2s;
-    }
-
-    .download:hover {
-        background: #ff4c4c;
-    }
-
     .creator-links {
         margin-top: 20px;
         display: flex;
@@ -112,61 +75,43 @@
 
 <h2>AHMAD RIJANI DESAIN VIEW</h2>
 
-<iframe id="videoUtama" src="https://drive.google.com/file/d/13SSNYSsN07x-oJC4xKTgHH5tJUGlhzHW/preview?autoplay=1&mute=1&loop=1" allow="autoplay" allowfullscreen></iframe>
-
 <div class="thumbnails">
-    <div class="thumb" onclick="gantiVideo('13SSNYSsN07x-oJC4xKTgHH5tJUGlhzHW','Desain 1')">
-        <img src="https://drive.google.com/thumbnail?id=13SSNYSsN07x-oJC4xKTgHH5tJUGlhzHW" alt="Desain 1">
-        <p>Desain 1</p>
+    <div class="thumb">
+        <a href="https://drive.google.com/file/d/13SSNYSsN07x-oJC4xKTgHH5tJUGlhzHW/view" target="_blank">
+            <img src="https://drive.google.com/thumbnail?id=13SSNYSsN07x-oJC4xKTgHH5tJUGlhzHW" alt="Desain 1">
+            <p>Desain 1</p>
+        </a>
     </div>
-    <div class="thumb" onclick="gantiVideo('18cckvhETVdMhkY82FoN1FuAiDkvexsQI','Desain 2')">
-        <img src="https://drive.google.com/thumbnail?id=18cckvhETVdMhkY82FoN1FuAiDkvexsQI" alt="Desain 2">
-        <p>Desain 2</p>
+    <div class="thumb">
+        <a href="https://drive.google.com/file/d/18cckvhETVdMhkY82FoN1FuAiDkvexsQI/view" target="_blank">
+            <img src="https://drive.google.com/thumbnail?id=18cckvhETVdMhkY82FoN1FuAiDkvexsQI" alt="Desain 2">
+            <p>Desain 2</p>
+        </a>
     </div>
-    <div class="thumb" onclick="gantiVideo('1Bdz5UAXmdyxfgl_ew1sDKV61kClPit5f','Desain 3')">
-        <img src="https://drive.google.com/thumbnail?id=1Bdz5UAXmdyxfgl_ew1sDKV61kClPit5f" alt="Desain 3">
-        <p>Desain 3</p>
+    <div class="thumb">
+        <a href="https://drive.google.com/file/d/1Bdz5UAXmdyxfgl_ew1sDKV61kClPit5f/view" target="_blank">
+            <img src="https://drive.google.com/thumbnail?id=1Bdz5UAXmdyxfgl_ew1sDKV61kClPit5f" alt="Desain 3">
+            <p>Desain 3</p>
+        </a>
     </div>
-    <div class="thumb" onclick="gantiVideo('1GRMMqfLkikYATq4O6bB0L_7m5fnF526l','Desain 4')">
-        <img src="https://drive.google.com/thumbnail?id=1GRMMqfLkikYATq4O6bB0L_7m5fnF526l" alt="Desain 4">
-        <p>Desain 4</p>
+    <div class="thumb">
+        <a href="https://drive.google.com/file/d/1GRMMqfLkikYATq4O6bB0L_7m5fnF526l/view" target="_blank">
+            <img src="https://drive.google.com/thumbnail?id=1GRMMqfLkikYATq4O6bB0L_7m5fnF526l" alt="Desain 4">
+            <p>Desain 4</p>
+        </a>
     </div>
-    <div class="thumb" onclick="gantiVideo('1NO3KpK4OskNABmGQ6anZ55Z65vT6Nau7','Desain 5')">
-        <img src="https://drive.google.com/thumbnail?id=1NO3KpK4OskNABmGQ6anZ55Z65vT6Nau7" alt="Desain 5">
-        <p>Desain 5</p>
+    <div class="thumb">
+        <a href="https://drive.google.com/file/d/1NO3KpK4OskNABmGQ6anZ55Z65vT6Nau7/view" target="_blank">
+            <img src="https://drive.google.com/thumbnail?id=1NO3KpK4OskNABmGQ6anZ55Z65vT6Nau7" alt="Desain 5">
+            <p>Desain 5</p>
+        </a>
     </div>
-    <div class="thumb" onclick="gantiVideo('1kBT3uZgmL1glZ4pL2NoZ0CGR0QUaq_91','Desain 6')">
-        <img src="https://drive.google.com/thumbnail?id=1kBT3uZgmL1glZ4pL2NoZ0CGR0QUaq_91" alt="Desain 6">
-        <p>Desain 6</p>
-    </div>
-    <div class="thumb" onclick="gantiVideo('1kd-Wsz_IawcF4wyYvTEvzSyXb6WA6NmL','Desain 7')">
-        <img src="https://drive.google.com/thumbnail?id=1kd-Wsz_IawcF4wyYvTEvzSyXb6WA6NmL" alt="Desain 7">
-        <p>Desain 7</p>
-    </div>
-</div>
-
-<div class="controls">
-    <a id="downloadLink" href="https://drive.google.com/uc?export=download&id=13SSNYSsN07x-oJC4xKTgHH5tJUGlhzHW" class="download" target="_blank"><i class="fa-solid fa-download"></i> Download Desain 1</a>
 </div>
 
 <div class="creator-links">
     <a href="https://www.instagram.com/ahmadrijaniofficial/" target="_blank"><i class="fa-brands fa-instagram"></i> IG: @ahmadrijaniofficial</a>
     <a href="https://www.youtube.com/@ahmadrijaniofficial" target="_blank"><i class="fa-brands fa-youtube"></i> YT: @ahmadrijaniofficial</a>
 </div>
-
-<script>
-function gantiVideo(fileId, nama) {
-    const iframe = document.getElementById('videoUtama');
-    const downloadLink = document.getElementById('downloadLink');
-
-    iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1&mute=1&loop=1`;
-    downloadLink.href = `https://drive.google.com/uc?export=download&id=${fileId}`;
-    downloadLink.innerHTML = `<i class="fa-solid fa-download"></i> Download ${nama}`;
-
-    // Scroll ke posisi iframe
-    iframe.scrollIntoView({ behavior: 'smooth' });
-}
-</script>
 
 </body>
 </html>
