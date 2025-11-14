@@ -43,12 +43,52 @@
     .count {
         font-size: 16px;
     }
+
+    .lihat-btn {
+        display: inline-block;
+        padding: 5px 10px;
+        background: #3897f0;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .lihat-btn:hover {
+        background: #1a73e8;
+    }
+
+    .creator-links {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .creator-links a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .creator-links a:hover {
+        text-decoration: underline;
+    }
 </style>
 
 </head>
 <body>
 
 <div id="container"></div>
+
+<div class="creator-links">
+    <a href="https://www.instagram.com/ahmadrijaniofficial/" target="_blank"><i class="fa-brands fa-instagram"></i> IG: @ahmadrijaniofficial</a>
+    <a href="https://www.youtube.com/@ahmadrijaniofficial" target="_blank"><i class="fa-brands fa-youtube"></i> YT: @ahmadrijaniofficial</a>
+</div>
 
 <script>
     const container = document.getElementById("container");
@@ -67,7 +107,7 @@
             const path = `image/${i}.png`;
             const exists = await checkImage(path);
 
-            if (!exists) continue; // skip kalau tidak ada
+            if (!exists) continue;
 
             const post = document.createElement("div");
             post.className = "post";
@@ -76,10 +116,10 @@
 
             post.innerHTML = `
                 <img src="${path}" alt="Desain ${i}">
-
                 <div class="post-info">
                     <span class="like-btn" onclick="like(${i})">❤️</span>
                     <span id="count_${i}" class="count">${likeCount} suka</span>
+                    <a class="lihat-btn" href="${path}" target="_blank">Lihat Penuh</a>
                 </div>
             `;
 
