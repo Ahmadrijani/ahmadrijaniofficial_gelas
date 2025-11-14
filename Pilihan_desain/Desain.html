@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AHMAD RIJANI DESAIN VIEW</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .thumbnails {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .thumb {
+        width: 120px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .thumb img {
+        width: 100%;
+        border-radius: 8px;
+        border: 2px solid rgba(255,255,255,0.5);
+        transition: transform 0.2s;
+    }
+
+    .thumb img:hover {
+        transform: scale(1.05);
+    }
+
+    .thumb p {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #fff;
+    }
+
+    .creator-links {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .creator-links a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .creator-links a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<h2>AHMAD RIJANI DESAIN VIEW</h2>
+
+<div class="thumbnails" id="thumbnails"></div>
+
+<div class="creator-links">
+    <a href="https://www.instagram.com/ahmadrijaniofficial/" target="_blank"><i class="fa-brands fa-instagram"></i> IG: @ahmadrijaniofficial</a>
+    <a href="https://www.youtube.com/@ahmadrijaniofficial" target="_blank"><i class="fa-brands fa-youtube"></i> YT: @ahmadrijaniofficial</a>
+</div>
+
+<script>
+const jumlahDesain = 10; // ganti sesuai jumlah desain yang ada
+const folder = "image";  // nama folder tempat file PNG
+const container = document.getElementById("thumbnails");
+
+for(let i = 1; i <= jumlahDesain; i++){
+    const filePath = `${folder}/Desain ${i}.png`;
+    const thumb = document.createElement("div");
+    thumb.className = "thumb";
+    thumb.innerHTML = `
+        <a href="${filePath}" target="_blank">
+            <img src="${filePath}" alt="Desain ${i}">
+            <p>Desain ${i}</p>
+        </a>
+    `;
+    container.appendChild(thumb);
+}
+</script>
+
+</body>
+</html>
