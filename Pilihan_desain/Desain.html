@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galeri Desain Kumina</title>
+<title>Pilihan Desain</title>
 
 <style>
     body {
@@ -11,6 +11,11 @@
         background: #fafafa;
         margin: 0;
         padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     .post {
@@ -35,13 +40,17 @@
     }
 
     .like-btn {
-        font-size: 22px;
+        font-size: 16px;
         cursor: pointer;
         user-select: none;
+        padding: 4px 8px;
+        background-color: #e0e0e0;
+        border-radius: 6px;
     }
 
     .count {
-        font-size: 16px;
+        font-size: 14px;
+        margin-left: 5px;
     }
 
     .lihat-btn {
@@ -52,7 +61,6 @@
         border-radius: 6px;
         text-decoration: none;
         font-size: 14px;
-        margin-left: 10px;
         cursor: pointer;
     }
 
@@ -63,7 +71,7 @@
     .creator-links {
         margin-top: 30px;
         text-align: center;
-        font-size: 18px;
+        font-size: 16px;
         display: flex;
         justify-content: center;
         gap: 20px;
@@ -83,11 +91,13 @@
 </head>
 <body>
 
+<h2>Pilihan Desain</h2>
+
 <div id="container"></div>
 
 <div class="creator-links">
-    <a href="https://www.instagram.com/ahmadrijaniofficial/" target="_blank"><i class="fa-brands fa-instagram"></i> IG: @ahmadrijaniofficial</a>
-    <a href="https://www.youtube.com/@ahmadrijaniofficial" target="_blank"><i class="fa-brands fa-youtube"></i> YT: @ahmadrijaniofficial</a>
+    <a href="https://www.instagram.com/ahmadrijaniofficial/" target="_blank">IG: @ahmadrijaniofficial</a>
+    <a href="https://www.youtube.com/@ahmadrijaniofficial" target="_blank">YT: @ahmadrijaniofficial</a>
 </div>
 
 <script>
@@ -117,9 +127,9 @@
             post.innerHTML = `
                 <img src="${path}" alt="Desain ${i}">
                 <div class="post-info">
-                    <span class="like-btn" onclick="like(${i})">❤️</span>
-                    <span id="count_${i}" class="count">${likeCount} suka</span>
-                    <a class="lihat-btn" href="${path}" target="_blank">Lihat Penuh</a>
+                    <span class="like-btn" onclick="like(${i})">Suka</span>
+                    <span id="count_${i}" class="count">${likeCount} kali</span>
+                    <a class="lihat-btn" href="${path}" target="_blank">Tampilkan Gambar</a>
                 </div>
             `;
 
@@ -131,7 +141,7 @@
         let current = parseInt(localStorage.getItem(`like_${id}`) || 0);
         current++;
         localStorage.setItem(`like_${id}`, current);
-        document.getElementById(`count_${id}`).textContent = current + " suka";
+        document.getElementById(`count_${id}`).textContent = current + " kali";
     }
 
     loadImages();
