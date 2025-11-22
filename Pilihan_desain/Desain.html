@@ -75,6 +75,7 @@
         display: flex;
         justify-content: center;
         gap: 20px;
+        flex-wrap: wrap;
     }
 
     .creator-links a {
@@ -86,6 +87,13 @@
     .creator-links a:hover {
         text-decoration: underline;
     }
+
+    .creator-note {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+    }
 </style>
 
 </head>
@@ -96,9 +104,9 @@
 <div id="container"></div>
 
 <div class="creator-links">
-    <a href="https://www.instagram.com/ahmadrijaniofficial/" target="_blank">IG: @ahmadrijaniofficial</a>
-    <a href="https://www.youtube.com/@ahmadrijaniofficial" target="_blank">YT: @ahmadrijaniofficial</a>
+    <a href="https://www.instagram.com/mug_costum_11_tkj2/" target="_blank">IG Penjual: @mug_costum_11_tkj2</a>
 </div>
+<div class="creator-note">Web ini dibuat oleh Ahmad Rijani 📝</div>
 
 <script>
     const container = document.getElementById("container");
@@ -113,7 +121,7 @@
     }
 
     async function loadImages() {
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= 100; i++) {
             const path = `image/${i}.png`;
             const exists = await checkImage(path);
 
