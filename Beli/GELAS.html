@@ -2,404 +2,594 @@
 <html lang="id">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Gelas mug costum</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<title>Gelas Mug Custom</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
-  :root{
-    --bg-1:#020617; --bg-2:#071232; --card:#0b1220; --accent:#0ea5ff;
-    --muted:#9aa7bf; --text:#e6eef8; --radius:12px;
+  :root {
+    --bg-main: #0f172a;
+    --card-bg: #1e293b;
+    --accent: #38bdf8;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --radius: 16px;
+    --shoppe-accent: #ff6f00; /* warna tombol beli mengambang */
   }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased;padding-bottom:28px}
 
-  /* HEADER - tidak fixed */
-  .header{display:flex;gap:8px;align-items:center;padding:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03);flex-wrap:wrap}
-  .brand{display:flex;gap:10px;align-items:center;font-weight:800}
-  .brand .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#052b4a,#08325a);display:flex;align-items:center;justify-content:center;font-weight:900}
-  .tabs{margin-left:16px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-  .tab-btn{padding:8px 12px;border-radius:10px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-weight:700;transition:all .18s}
-  .tab-btn:hover{transform:translateY(-2px)}
-  .tab-btn.active{background:linear-gradient(90deg,rgba(14,165,255,0.12),rgba(14,165,255,0.06)); color:var(--text)}
-
-  .container{max-width:1100px;margin:18px auto;padding:12px}
-  .product-card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:14px;border-radius:var(--radius);display:flex;gap:14px;align-items:center;flex-wrap:wrap;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
-  .product-thumb{flex:0 0 320px;max-width:100%}
-  .product-thumb img{width:100%;height:auto;max-height:56vh;object-fit:contain;border-radius:10px;display:block;border:1px solid rgba(255,255,255,0.03)}
-  .product-info{flex:1;min-width:180px}
-  h1.prod-title{margin:0;font-size:20px}
-  .price{font-size:20px;font-weight:900;margin:8px 0;color:var(--accent)}
-  .muted{color:var(--muted);font-size:13px}
-  .buy-btn{background:linear-gradient(90deg,var(--accent),#0086d1);color:#00121a;padding:12px 16px;border-radius:12px;border:none;font-weight:900;cursor:pointer;font-size:16px;display:inline-flex;align-items:center;gap:10px}
-  .link-like{background:transparent;border:none;color:var(--accent);font-weight:800;cursor:pointer;padding:6px 8px;border-radius:8px}
-
-  /* PREVIEW (Buy) = grid */
-  .design-section{margin-top:18px}
-  .design-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:8px}
-  .design-card{background:var(--card);padding:8px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column}
-  .thumb-wrap{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:8px}
-  .design-card img{width:100%;height:100%;object-fit:cover;display:block}
-  .design-no{margin-top:8px;font-weight:800;color:var(--text)}
-  .design-actions{display:flex;gap:8px;margin-top:8px}
-  .btn-small{padding:8px;border-radius:8px;border:none;font-weight:800;cursor:pointer}
-  .btn-buy-small{background:var(--accent);color:#00121a;flex:1}
-
-  /* LIHAT DESAIN = vertical list (satu baris per item) */
-  #allDesignGrid{display:flex;flex-direction:column;gap:12px;margin-top:8px}
-  .list-card{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:var(--card);border:1px solid rgba(255,255,255,0.02)}
-  .list-card .thumb-small{width:110px;flex:0 0 110px;aspect-ratio:4/3;overflow:hidden;border-radius:8px}
-  .list-card .thumb-small img{width:100%;height:100%;object-fit:cover;display:block}
-  .list-meta{flex:1;display:flex;flex-direction:column;gap:6px}
-  .list-actions{display:flex;gap:8px;align-items:center}
-
-  /* YT, kontak, footer */
-  .yt-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-  .yt-item{background:var(--card);padding:10px;border-radius:10px;display:flex;gap:12px;align-items:center;border:1px solid rgba(255,255,255,0.02)}
-  .yt-thumb{width:160px;flex:0 0 160px;border-radius:8px;overflow:hidden}
-  .yt-thumb img{width:100%;height:auto;display:block;object-fit:cover}
-  .yt-meta{flex:1;display:flex;flex-direction:column;gap:6px}
-  .yt-title{font-weight:800;color:var(--text)}
-  .kontak-card{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.5);margin-top:12px;border:1px solid rgba(255,255,255,0.03)}
-  .kontak-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-  .kontak-link{display:flex;gap:8px;align-items:center;color:var(--text);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
-  .kontak-link i{width:28px;text-align:center;font-size:16px;color:var(--accent)}
-  .kontak-handle{color:var(--text);font-weight:800}
-  .footer{margin-top:20px;padding:12px;text-align:center;color:var(--muted);font-weight:700;border-top:1px solid rgba(255,255,255,0.02)}
-  .manual-link{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:8px;border-radius:8px;margin-top:10px;border:1px dashed rgba(255,255,255,0.03);display:none}
-  .tab-content{max-height:0;opacity:0;overflow:hidden;transform:translateY(8px);transition:max-height .42s cubic-bezier(.2,.9,.2,1),opacity .28s,transform .28s}
-  .tab-content.open{max-height:2000px;opacity:1;transform:none}
-
-  @media(max-width:640px){
-    .product-thumb{flex-basis:100%}
-    .product-card{flex-direction:column;align-items:stretch}
-    .yt-thumb{width:120px;flex-basis:120px}
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    padding-bottom: 100px; /* ruang untuk tombol mengambang */
+    -webkit-tap-highlight-color: transparent;
   }
-  @media(max-width:420px){
-    #allDesignGrid .list-card{flex-direction:column;align-items:flex-start}
-    #allDesignGrid .thumb-small{width:100%;aspect-ratio:16/9}
+
+  /* --- HEADER STICKY --- */
+  .header {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   }
+
+  .nav-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 960px;
+    margin: 0 auto 12px auto;
+  }
+
+  .logo-box {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: white;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+
+  /* --- TAB NAVIGASI --- */
+  .tabs-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    background: rgba(255,255,255,0.05);
+    padding: 4px;
+    border-radius: 50px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  .tab-btn i { font-size: 14px; }
+  
+  .tab-btn.active {
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+  }
+
+  /* --- CONTAINER & ANIMASI --- */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 80vh;
+  }
+
+  .tab-content {
+    display: none;
+    animation: fadeUp 0.5s ease forwards;
+  }
+  
+  .tab-content.open { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- LOADING SPINNER --- */
+  .loader-box {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--accent);
+  }
+  .spinner {
+    font-size: 40px;
+    margin-bottom: 15px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+
+  /* --- TOMBOL UMUM --- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.1s;
+  }
+  .btn:active { transform: scale(0.97); }
+
+  .btn-wa { background: #25D366; color: white; }
+  .btn-accent { background: var(--accent); color: #09090b; }
+  .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+
+  /* --- TOMBOL KHUSUS --- */
+  .btn-beli { padding: 18px; font-size: 16px; border-radius: 14px; }
+  .btn-pilih { padding: 12px; font-size: 14px; }
+
+  /* --- TAB 1: BELI (HERO) --- */
+  .hero-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 25px;
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  /* responsive: hero layout vertical on small screens */
+  .hero-media {
+    flex: 1 1 320px;
+    min-width: 200px;
+  }
+  .hero-body {
+    flex: 1 1 300px;
+    padding: 16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: cover; /* jaga proporsi, bisa mengecil */
+    display:block;
+    background: #000;
+  }
+
+  .grid-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .card-mini {
+    background: var(--card-bg);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .card-mini img {
+    width: 100%;
+    height: auto; /* bisa mengecil */
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 8px;
+    display:block;
+  }
+
+  /* small screens: single column preview */
+  @media (max-width: 560px) {
+    .hero-card { flex-direction: column; }
+    .hero-media, .hero-body { min-width: auto; }
+    .grid-preview { grid-template-columns: 1fr; }
+    .tabs-wrapper { padding: 6px; }
+    .nav-top { max-width: 100%; padding: 0 8px; }
+    .container { padding: 12px; }
+    .btn-beli { padding: 16px; font-size: 15px; }
+  }
+
+  /* larger screens: keep compact */
+  @media (min-width: 961px) {
+    .container { padding: 28px; }
+  }
+
+  /* --- TAB 2: DESAIN (VERTIKAL) --- */
+  .design-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+  .design-card img {
+    width: 100%; height: auto; display: block;
+    min-height: 200px; background: #111;
+  }
+  .design-info {
+    padding: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 10px;
+  }
+
+  /* --- TAB YOUTUBE --- */
+  .yt-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .yt-thumb {
+    width: 100%; aspect-ratio: 16/9;
+    position: relative; background: #000; cursor: pointer;
+  }
+  .yt-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; display:block; }
+  .play-btn {
+    position: absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+    width: 50px; height: 50px; background: rgba(255,0,0,0.9);
+    border-radius: 50%; color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; box-shadow: 0 0 20px rgba(255,0,0,0.4);
+  }
+  .yt-body { padding: 16px; }
+
+  /* --- TAB 4: KONTAK --- */
+  .contact-item {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    display: flex; align-items: center; gap: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+  }
+  .contact-item:active { background: rgba(255,255,255,0.1); }
+  .icon-wrap { width: 30px; text-align: center; font-size: 24px; }
+
+  /* --- Floating Buy Button (Shopee style) --- */
+  .fab-buy {
+    position: fixed;
+    right: 18px;
+    bottom: 20px;
+    z-index: 1200;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--shoppe-accent);
+    display: none; /* default hidden, shown on tab Beli */
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    cursor: pointer;
+    border: 4px solid rgba(255,255,255,0.06);
+  }
+  .fab-buy .label {
+    position: absolute;
+    right: 76px;
+    bottom: 8px;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    display: none; /* appear on hover on desktop */
+    white-space: nowrap;
+  }
+  @media (hover:hover) {
+    .fab-buy:hover .label { display: block; }
+  }
+
 </style>
 </head>
 <body>
-  <header class="header" role="banner">
-    <div class="brand">
-      <div class="logo"><i class="fa-solid fa-mug-saucer" style="font-size:18px;color:var(--accent)"></i></div>
-      <div><div style="font-size:14px;color:var(--muted)">Toko</div><div style="font-size:16px">Gelas mug costum</div></div>
+
+  <header class="header">
+    <div class="nav-top">
+      <div class="logo-box"><i class="fa-solid fa-mug-hot"></i></div>
+      <div>
+        <div style="font-size:11px; opacity:0.7; letter-spacing:1px;">OFFICIAL STORE</div>
+        <div style="font-weight:800; font-size:18px; line-height:1;">Gelas Mug</div>
+      </div>
     </div>
-    <nav class="tabs" role="navigation" aria-label="tab navigasi">
-      <button class="tab-btn active" data-tab="buy"><i class="fa-solid fa-cart-shopping"></i> Buy</button>
-      <button class="tab-btn" data-tab="desain"><i class="fa-solid fa-images"></i> Lihat Desain</button>
-      <button class="tab-btn" data-tab="youtube"><i class="fa-brands fa-youtube"></i> YouTube</button>
-      <button class="tab-btn" data-tab="kontak"><i class="fa-solid fa-address-book"></i> Kontak</button>
-    </nav>
+    
+    <div class="tabs-wrapper">
+      <button class="tab-btn active" onclick="switchTab('beli')">
+        <i class="fa-solid fa-cart-shopping"></i> Beli
+      </button>
+      <button class="tab-btn" onclick="switchTab('desain')">
+        <i class="fa-solid fa-images"></i> Desain
+      </button>
+      <button class="tab-btn" onclick="switchTab('youtube')">
+        <i class="fa-brands fa-youtube"></i> YouTube
+      </button>
+      <button class="tab-btn" onclick="switchTab('kontak')">
+        <i class="fa-solid fa-address-book"></i> Kontak
+      </button>
+    </div>
   </header>
 
   <main class="container">
-    <!-- BUY -->
-    <section id="tab-buy" class="tab-content open" aria-labelledby="prod-title">
-      <div class="product-card">
-        <div class="product-thumb">
-          <img id="heroImage" src="asset/gambar_tes.png" alt="Gelas mug costum" loading="lazy" decoding="async" sizes="(max-width:420px) 100vw, (max-width:900px) 50vw, 33vw">
+
+    <section id="tab-beli" class="tab-content open">
+      <div class="hero-card">
+        <div class="hero-media">
+          <img src="gambar_tes.png" id="heroImgDisplay" class="hero-img" alt="Produk Mug">
         </div>
-        <div class="product-info">
-          <h1 id="prod-title" class="prod-title">Gelas mug costum</h1>
-          <div class="price" id="priceText">Rp40.000</div>
-          <p class="muted">Stok: tersedia</p>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-            <button id="buyNow" class="buy-btn"><i class="fa-solid fa-paper-plane"></i> Beli Sekarang</button>
-            <button class="link-like" id="lihatLain" title="Lihat desain lain"><i class="fa-solid fa-chevron-down"></i> Lihat desain lain</button>
-          </div>
-          <div id="manualArea" class="manual-link" aria-hidden="true"></div>
+        <div class="hero-body">
+          <h2 style="margin:0 0 5px 0;">Cetak Mug Custom Satuan</h2>
+          <div style="color:var(--accent); font-weight:800; font-size:26px;">Rp40.000</div>
+          <p style="color:var(--text-muted); font-size:14px; margin: 10px 0 20px 0;">
+            Bisa pakai foto sendiri, tulisan, atau logo. Pengerjaan cepat & garansi aman sampai tujuan.
+          </p>
+          <button class="btn btn-wa btn-beli" onclick="goLink(genWa(appSettings.pesanBeli))">
+            <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang via WA
+          </button>
         </div>
       </div>
 
-      <div class="design-section">
-        <h3 style="margin:10px 0 6px">Desain (preview)</h3>
-        <div id="designGrid" class="design-grid" aria-live="polite"></div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3 style="margin:0;">Preview Desain</h3>
+        <span style="font-size:12px; color:var(--accent); cursor:pointer;" onclick="switchTab('desain')">Lihat Semua <i class="fa-solid fa-arrow-right"></i></span>
       </div>
+
+      <div id="gridPreview" class="grid-preview"></div>
     </section>
 
-    <!-- LIHAT DESAIN (VERTICAL LIST) -->
-    <section id="tab-desain" class="tab-content" style="display:block">
-      <h3 style="margin-top:6px">Semua Desain</h3>
-      <div id="allDesignGrid" class="design-grid" aria-live="polite"></div>
-    </section>
-
-    <!-- YOUTUBE -->
-    <section id="tab-youtube" class="tab-content" style="display:block">
-      <h3 style="margin-top:6px">Video</h3>
-      <div id="ytArea" class="yt-list"><div class="muted">Memuat daftar... kalau gagal, cek file <code>linkYT.json</code>.</div></div>
-    </section>
-
-    <!-- KONTAK -->
-    <section id="tab-kontak" class="tab-content" style="display:block">
-      <h3 style="margin-top:6px">Kontak Saya</h3>
-      <div class="kontak-card">
-        <div class="kontak-row" style="margin-bottom:8px">
-          <a class="kontak-link" href="https://instagram.com/ahmadrijaniofficial" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><div class="kontak-handle">@ahmadrijaniofficial</div></a>
-          <a class="kontak-link" href="https://www.youtube.com/@ahmadrijaniofficial" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i><div class="kontak-handle">@ahmadrijaniofficial</div></a>
-          <a class="kontak-link" href="https://www.tiktok.com/@ahmadrijaniofficial" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i><div class="kontak-handle">@ahmadrijaniofficial</div></a>
+    <section id="tab-desain" class="tab-content">
+      <div id="loadingDesain" class="loader-box">
+        <div class="spinner"><i class="fa-solid fa-circle-notch"></i></div>
+        <div>Memuat Katalog Desain...</div>
+      </div>
+      
+      <div id="listDesain" style="display:none;">
         </div>
-        <div class="kontak-row">
-          <a class="kontak-link" href="https://instagram.com/mug_costum_11_tkj2" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><div class="kontak-handle">@mug_costum_11_tkj2</div></a>
-          <button id="waContact" class="kontak-link" style="cursor:pointer;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:none"><i class="fa-brands fa-whatsapp"></i><div class="kontak-handle">WhatsApp</div></button>
-        </div>
+      
+      <div id="footerDesain" style="text-align:center; padding:20px; color:var(--text-muted); display:none;">
+        <i class="fa-solid fa-check-circle"></i> Semua desain sudah ditampilkan
       </div>
     </section>
 
-    <div class="footer">Web dibuat oleh Ahmad Rijani</div>
+    <section id="tab-youtube" class="tab-content">
+      <div id="loadingYouTube" class="loader-box">
+        <div class="spinner"><i class="fa-solid fa-circle-notch"></i></div>
+        <div>Mengambil Data YouTube...</div>
+      </div>
+      <div id="listYouTube" style="display:none;">
+        </div>
+    </section>
+
+    <section id="tab-kontak" class="tab-content">
+      <h3 style="margin-top:0">Hubungi Kami</h3>
+      <div id="listKontak"></div>
+    </section>
+
   </main>
 
-<script>
-/* KONFIGURASI */
-const encodedNumber = "MDgyMzUxMzMzMDQ3"; // base64 nomor WA
-const harga = 40000;
-const maxDesign = 20;
-const desainFolder = 'asset/foto/'; // asset/foto/1.png ... 20.png (PNG only)
-const assetHero = 'asset/gambar_tes.png';
+  <!-- Floating buy button (Shopee-like) -->
+  <div class="fab-buy" id="fabBuy" title="Beli Sekarang" onclick="goLink(genWa(appSettings.pesanBeli))">
+    <div class="label">Beli Sekarang</div>
+    <i class="fa-solid fa-cart-shopping" style="font-size:22px;"></i>
+  </div>
 
-/* util */
-function formatRupiah(n){ return 'Rp' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  <script src="settings.js"></script>
+  <script src="link.js"></script>
 
-/* set harga */
-document.getElementById('priceText').textContent = formatRupiah(harga);
+  <script>
+    /* ================= 1. HELPERS & NAVIGASI ================= */
 
-/* Tab handling */
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabNames = ['buy','desain','youtube','kontak'];
-function showTab(name){
-  tabNames.forEach(t=>{
-    const el = document.getElementById('tab-'+t);
-    const btn = document.querySelector('.tab-btn[data-tab="'+t+'"]');
-    if(!el || !btn) return;
-    if(t === name){ el.classList.add('open'); btn.classList.add('active'); el.setAttribute('aria-hidden','false'); }
-    else { el.classList.remove('open'); btn.classList.remove('active'); el.setAttribute('aria-hidden','true'); }
-  });
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-tabButtons.forEach(b=> b.addEventListener('click', ()=> showTab(b.dataset.tab) ));
-showTab('buy');
+    function goLink(url) {
+      window.location.href = url;
+    }
 
-/* lihat desain lain */
-document.getElementById('lihatLain').addEventListener('click', ()=>{
-  showTab('desain');
-  const el = document.getElementById('allDesignGrid');
-  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
-});
+    function genWa(pesan) {
+      return `https://wa.me/${appSettings.nomorWA}?text=${encodeURIComponent(pesan)}`;
+    }
 
-/* Open WhatsApp (popup detect) */
-function openWhatsApp(nomor, pesan){
-  const url = 'https://wa.me/' + nomor + '?text=' + pesan;
-  const win = window.open(url, '_blank');
-  if(!win){
-    const manual = document.getElementById('manualArea');
-    manual.style.display = 'block';
-    manual.setAttribute('aria-hidden','false');
-    manual.innerHTML = '<div>Popup diblokir. Klik link manual ini: <br><a href="'+url+'" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">'+url+'</a></div>';
-  } else {
-    const manual = document.getElementById('manualArea');
-    manual.style.display = 'none';
-    manual.setAttribute('aria-hidden','true');
-  }
-}
+    function getYoutubeId(url) {
+      const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
 
-/* Buy actions */
-document.getElementById('buyNow').addEventListener('click', ()=>{
-  const nomor = atob(encodedNumber);
-  const pesan = encodeURIComponent('Halo, saya mau beli gelas (harga ' + formatRupiah(harga) + ')');
-  openWhatsApp(nomor, pesan);
-});
-document.getElementById('waContact').addEventListener('click', ()=>{
-  const nomor = atob(encodedNumber);
-  const pesan = encodeURIComponent('Halo, saya mau tanya tentang Gelas mug costum');
-  openWhatsApp(nomor, pesan);
-});
+    function absoluteUrl(path) {
+      if(!path) return path;
+      if(/^https?:\/\//i.test(path) || /^\/\//.test(path)) return path;
+      const base = location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')+1);
+      return base + path.replace(/^\.\//,'');
+    }
 
-/* imageExists with timeout */
-function imageExists(src, timeout=2000){
-  return new Promise(resolve=>{
-    const img = new Image();
-    let done=false;
-    img.onload = ()=>{ if(!done){ done=true; resolve(true); } };
-    img.onerror = ()=>{ if(!done){ done=true; resolve(false); } };
-    setTimeout(()=>{ if(!done){ done=true; resolve(false); } }, timeout);
-    img.src = src;
-  });
-}
+    // Pindah Tab + show/hide fab
+    function switchTab(name) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      const buttons = document.querySelectorAll('.tab-btn');
+      const map = { 'beli':0, 'desain':1, 'youtube':2, 'kontak':3 };
+      if(buttons[map[name]]) buttons[map[name]].classList.add('active');
 
-/* init hero */
-(async function initHero(){
-  const heroEl = document.getElementById('heroImage');
-  const ok = await imageExists(assetHero,2000);
-  if(ok) heroEl.src = assetHero;
-  else heroEl.src = generatePlaceholder('No hero image (asset/gambar_tes.png)');
-})();
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('open'));
+      document.getElementById('tab-' + name).classList.add('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
-/* placeholder */
-function generatePlaceholder(text,w=800,h=600){
-  const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'"><rect width="100%" height="100%" fill="#2b3745"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#9aa7bf" font-size="24" font-family="Arial,Helvetica">'+text+'</text></svg>';
-  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-}
+      if(name === 'desain') loadDesain();
+      if(name === 'youtube') loadVideo();
+      if(name === 'kontak') loadKontak();
 
-/* create list-card for "Lihat Desain" (vertical row) */
-function createListCard(index, imgPath){
-  const card = document.createElement('div');
-  card.className = 'list-card';
+      // fab behavior: tampilkan hanya saat tab 'beli'
+      const fab = document.getElementById('fabBuy');
+      if(fab) fab.style.display = (name === 'beli') ? 'flex' : 'none';
+    }
 
-  const thumb = document.createElement('div');
-  thumb.className = 'thumb-small';
-  const img = document.createElement('img');
-  img.src = imgPath;
-  img.alt = 'Desain ' + index;
-  img.loading = 'lazy';
-  img.decoding = 'async';
-  thumb.appendChild(img);
+    /* ================= 2. INITIALIZE HOME ================= */
+    document.addEventListener("DOMContentLoaded", () => {
+      // Hero Image: pakai gambar_tes.png jika ada, fallback ke appSettings.heroImage
+      const hero = document.getElementById('heroImgDisplay');
+      hero.src = 'gambar_tes.png';
+      hero.onerror = () => { hero.src = appSettings.heroImage; };
 
-  const meta = document.createElement('div');
-  meta.className = 'list-meta';
-  const title = document.createElement('div');
-  title.textContent = 'Desain #' + index;
-  title.style.fontWeight = '800';
-  const subtitle = document.createElement('div');
-  subtitle.className = 'muted';
-  subtitle.textContent = 'Harga: ' + formatRupiah(harga);
+      // Render Grid Preview (4 items)
+      const grid = document.getElementById('gridPreview');
+      grid.innerHTML = "";
+      for(let i=1; i<=4; i++) {
+        const imgRel = `${appSettings.folderAsset}${i}.png`;
+        const absImg = absoluteUrl(imgRel);
+        let waUrl = genWa(`Saya pilih desain nomor #${i} dan ini link gambar nya: ${absImg}`);
+        grid.innerHTML += `
+          <div class="card-mini">
+            <img src="${imgRel}" onerror="this.src='gambar_tes.png'">
+            <button class="btn btn-accent btn-pilih" style="font-size:12px; padding:8px;" onclick="goLink('${waUrl}')">
+              <i class="fa-brands fa-whatsapp"></i> Pilih #${i}
+            </button>
+          </div>
+        `;
+      }
 
-  const actions = document.createElement('div');
-  actions.className = 'list-actions';
-  const btnBuy = document.createElement('button');
-  btnBuy.className = 'btn-small btn-buy-small';
-  btnBuy.type = 'button';
-  btnBuy.textContent = 'Beli yang ini';
-  btnBuy.addEventListener('click', function(){
-    // buat pesan dengan format contoh: "Saya pilih desain nomor 6 yang ini file:///asset/foto/6.png"
-    const nomor = atob(encodedNumber);
-    // pakai file:/// + path (sesuai contoh)
-    let pathForMsg = imgPath;
-    if(pathForMsg.charAt(0) !== '/') pathForMsg = '/' + pathForMsg;
-    const fileUrl = 'file:///' + pathForMsg.replace(/^\/+/,'');
-    const pesanText = 'Saya pilih desain nomor ' + index + ' yang ini ' + fileUrl;
-    const pesan = encodeURIComponent(pesanText);
-    openWhatsApp(nomor, pesan);
-  });
-
-  const aView = document.createElement('a');
-  aView.className = 'btn-small';
-  aView.href = imgPath;
-  aView.target = '_blank';
-  aView.rel = 'noopener';
-  aView.textContent = 'Lihat';
-
-  actions.appendChild(btnBuy);
-  actions.appendChild(aView);
-
-  meta.appendChild(title);
-  meta.appendChild(subtitle);
-  meta.appendChild(actions);
-
-  card.appendChild(thumb);
-  card.appendChild(meta);
-
-  return card;
-}
-
-/* create grid-card for preview (Buy tab) */
-function createGridCard(index, imgPath){
-  const card = document.createElement('div');
-  card.className = 'design-card';
-  const inner = '<div class="thumb-wrap"><img src="'+imgPath+'" alt="Desain '+index+'" loading="lazy" decoding="async" sizes="(max-width:420px) 100vw, (max-width:900px) 50vw, 33vw"></div>' +
-                '<div class="design-no">#'+index+'</div>' +
-                '<div class="design-actions"><button class="btn-small btn-buy-small" type="button" data-index="'+index+'" data-path="'+imgPath+'">Beli yang ini</button>' +
-                '<a class="btn-small" href="'+imgPath+'" target="_blank" rel="noopener" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)">Lihat</a></div>';
-  card.innerHTML = inner;
-  // attach listener to the button (no inline)
-  const btn = card.querySelector('button[data-index]');
-  if(btn){
-    btn.addEventListener('click', function(){
-      const idx = btn.getAttribute('data-index');
-      const p = btn.getAttribute('data-path');
-      const nomor = atob(encodedNumber);
-      let pathForMsg = p;
-      if(pathForMsg.charAt(0) !== '/') pathForMsg = '/' + pathForMsg;
-      const fileUrl = 'file:///' + pathForMsg.replace(/^\/+/,'');
-      const pesanText = 'Saya pilih desain nomor ' + idx + ' yang ini ' + fileUrl;
-      const pesan = encodeURIComponent(pesanText);
-      openWhatsApp(nomor, pesan);
+      // Tampilkan fab kalau tab awal 'beli' terbuka
+      const fab = document.getElementById('fabBuy');
+      if(fab) fab.style.display = document.getElementById('tab-beli').classList.contains('open') ? 'flex' : 'none';
     });
-  }
-  return card;
-}
 
-/* load designs PNG only (asset/foto/1.png ... 20.png) */
-async function loadDesignsPngOnly(){
-  const previewContainer = document.getElementById('designGrid');
-  const allContainer = document.getElementById('allDesignGrid');
-  previewContainer.innerHTML = '';
-  allContainer.innerHTML = '';
+    /* ================= 3. LOGIKA DESAIN (LOADING + VERTIKAL) ================= */
+    let isDesainLoaded = false;
+    function loadDesain() {
+      if(isDesainLoaded) return;
 
-  const found = [];
-  for(let i=1;i<=maxDesign;i++){
-    const path = desainFolder + i + '.png';
-    const ok = await imageExists(path, 2000);
-    if(ok){
-      found.push({i, path});
-      // add grid preview (Buy)
-      const gridCard = createGridCard(i, path);
-      previewContainer.appendChild(gridCard);
-      // add vertical list item (Lihat Desain)
-      const listCard = createListCard(i, path);
-      allContainer.appendChild(listCard);
+      const loader = document.getElementById('loadingDesain');
+      const container = document.getElementById('listDesain');
+      const footer = document.getElementById('footerDesain');
+
+      loader.style.display = 'block';
+      container.style.display = 'none';
+
+      setTimeout(() => {
+        container.innerHTML = "";
+
+        for(let i=1; i<=appSettings.maxDesign; i++) {
+          let imgUrl = `${appSettings.folderAsset}${i}.png`;
+          let absImg = absoluteUrl(imgUrl);
+          let waUrl = genWa(`Saya pilih desain nomor #${i} dan ini link gambar nya: ${absImg}`);
+
+          container.innerHTML += `
+            <div class="design-card">
+              <div class="design-info">
+                <div style="font-weight:bold; font-size:16px;">Kode Desain #${i}</div>
+                <div style="font-size:12px; background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:6px;">
+                  <i class="fa-solid fa-tag"></i> Ready Stock
+                </div>
+              </div>
+              <img src="${imgUrl}" loading="lazy" onerror="this.src='gambar_tes.png'">
+              <div style="padding:16px;">
+                <button class="btn btn-wa" onclick="goLink('${waUrl}')">
+                  <i class="fa-brands fa-whatsapp"></i> Pesan Desain Ini
+                </button>
+              </div>
+            </div>
+          `;
+        }
+
+        loader.style.display = 'none';
+        container.style.display = 'block';
+        footer.style.display = 'block';
+        isDesainLoaded = true;
+      }, 800);
     }
-  }
 
-  // jika tidak ada sama sekali, tampilkan placeholder demo (4 buah)
-  if(found.length === 0){
-    for(let j=1;j<=4;j++){
-      const text = 'Contoh desain ' + j;
-      const dataUrl = generatePlaceholder(text,640,480);
-      const gridCard = createGridCard('C'+j, dataUrl);
-      previewContainer.appendChild(gridCard);
-      const listCard = createListCard('C'+j, dataUrl);
-      allContainer.appendChild(listCard);
+    /* ================= 4. LOGIKA VIDEO/YOUTUBE (REAL THUMBNAIL) ================= */
+    let isVideoLoaded = false;
+    function loadVideo() {
+      if(isVideoLoaded) return;
+
+      const loader = document.getElementById('loadingYouTube');
+      const container = document.getElementById('listYouTube');
+
+      loader.style.display = 'block';
+      container.style.display = 'none';
+
+      setTimeout(() => {
+        container.innerHTML = "";
+
+        if(!listVideo || listVideo.length === 0) {
+          container.innerHTML = "<div style='text-align:center'>Belum ada video.</div>";
+        } else {
+          listVideo.forEach(vid => {
+            let ytid = getYoutubeId(vid.url);
+            let thumb = ytid ? `https://img.youtube.com/vi/${ytid}/mqdefault.jpg` : 'https://via.placeholder.com/400x225?text=No+Thumbnail';
+
+            container.innerHTML += `
+              <div class="yt-card">
+                <div class="yt-thumb" onclick="goLink('${vid.url}')">
+                  <img src="${thumb}" alt="Thumbnail">
+                  <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="yt-body">
+                  <h4 style="margin:0 0 10px 0; line-height:1.4">${vid.judul}</h4>
+                  <button class="btn btn-outline" onclick="goLink('${vid.url}')">
+                    <i class="fa-brands fa-youtube"></i> Tonton Video
+                  </button>
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        loader.style.display = 'none';
+        container.style.display = 'block';
+        isVideoLoaded = true;
+      }, 800);
     }
-  }
-}
 
-/* YouTube loader (sama seperti sebelumnya) */
-async function loadYouTubeList(){
-  const area = document.getElementById('ytArea');
-  area.innerHTML = '<div class="muted">Memuat...</div>';
-  try{
-    const res = await fetch('linkYT.json', {cache:'no-store'});
-    if(!res.ok) throw new Error('JSON tidak ditemukan');
-    const data = await res.json();
-    if(!Array.isArray(data) || data.length===0){
-      area.innerHTML = '<div class="muted">Tidak ada data video di linkYT.json</div>';
-      return;
+    /* ================= 5. LOGIKA KONTAK ================= */
+    let isKontakLoaded = false;
+    function loadKontak() {
+      if(isKontakLoaded) return;
+      const container = document.getElementById('listKontak');
+      container.innerHTML = "";
+
+      container.innerHTML += `
+        <div class="contact-item" onclick="goLink(genWa('Halo Admin, mau tanya-tanya.'))" style="border-color:#25d366; background:rgba(37,211,102,0.1);">
+          <div class="icon-wrap"><i class="fa-brands fa-whatsapp" style="color:#25d366"></i></div>
+          <div>
+            <div style="font-weight:bold; color:#25d366">WhatsApp Admin</div>
+            <div style="font-size:12px; color:var(--text-muted)">Fast Response 24 Jam</div>
+          </div>
+        </div>
+      `;
+
+      appSettings.sosmed.forEach(s => {
+        container.innerHTML += `
+          <div class="contact-item" onclick="goLink('${s.url}')">
+            <div class="icon-wrap"><i class="${s.icon}" style="color:${s.color}"></i></div>
+            <div>
+              <div style="font-weight:bold;">${s.nama}</div>
+              <div style="font-size:12px; color:var(--text-muted)">${s.user}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      isKontakLoaded = true;
     }
-    area.innerHTML = '';
-    data.forEach(item=>{
-      const thumb = item.thumb ? item.thumb : (item.url ? 'https://img.youtube.com/vi/' + extractYouTubeID(item.url) + '/hqdefault.jpg' : '');
-      const div = document.createElement('div');
-      div.className = 'yt-item';
-      div.innerHTML = '<div class="yt-thumb"><img src="'+thumb+'" alt="'+escapeHtml(item.title||'video')+'" loading="lazy" decoding="async" sizes="(max-width:420px) 100vw, 160px"></div>' +
-                      '<div class="yt-meta"><div class="yt-title">'+escapeHtml(item.title||'Untitled')+'</div>' +
-                      '<div style="color:var(--muted);font-size:13px">'+escapeHtml(item.channel||'')+'</div>' +
-                      '<div class="yt-actions"><a class="buy-btn" style="background:#ff4b4b;color:#fff;text-decoration:none" href="'+item.url+'" target="_blank" rel="noopener">Tonton</a></div></div>';
-      area.appendChild(div);
-    });
-  }catch(e){
-    area.innerHTML = '<div class="muted">Gagal memuat linkYT.json — pastikan file tersedia. ('+e.message+')</div>';
-  }
-}
-function extractYouTubeID(url){ try{ const u=new URL(url); if(u.hostname.includes('youtu.be')) return u.pathname.slice(1); if(u.hostname.includes('youtube.com')) return u.searchParams.get('v')||''; return ''; }catch(e){return '';} }
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
-/* init */
-(async function init(){
-  await loadDesignsPngOnly();
-  let ytLoaded=false;
-  document.querySelector('.tab-btn[data-tab="youtube"]').addEventListener('click', ()=>{ if(!ytLoaded){ loadYouTubeList(); ytLoaded=true; } });
-})();
-</script>
+  </script>
 </body>
 </html>
