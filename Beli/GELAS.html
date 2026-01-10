@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -22,7 +21,7 @@
     font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
     background: var(--bg-main);
     color: var(--text-main);
-    padding-bottom: 100px; /* ruang untuk tombol mengambang */
+    padding-bottom: 120px; /* ruang untuk tombol mengambang + footer */
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -302,6 +301,31 @@
     .fab-buy:hover .label { display: block; }
   }
 
+  /* --- SITE CREDIT --- */
+  .site-credit {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+  }
+
+  /* page footer (persistent bottom) */
+  .page-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15,23,42,0.95);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    padding: 8px 12px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    z-index: 1199;
+  }
+
 </style>
 </head>
 <body>
@@ -356,6 +380,9 @@
       </div>
 
       <div id="gridPreview" class="grid-preview"></div>
+
+      <!-- credit di bawah tiap tab -->
+      <div class="site-credit">WEBSITE DI BUAT OLEH AHMAD RIJANI</div>
     </section>
 
     <section id="tab-desain" class="tab-content">
@@ -370,6 +397,9 @@
       <div id="footerDesain" style="text-align:center; padding:20px; color:var(--text-muted); display:none;">
         <i class="fa-solid fa-check-circle"></i> Semua desain sudah ditampilkan
       </div>
+
+      <!-- credit di bawah tiap tab -->
+      <div class="site-credit">WEBSITE DI BUAT OLEH AHMAD RIJANI</div>
     </section>
 
     <section id="tab-youtube" class="tab-content">
@@ -379,11 +409,28 @@
       </div>
       <div id="listYouTube" style="display:none;">
         </div>
+
+      <!-- credit di bawah tiap tab -->
+      <div class="site-credit">WEBSITE DI BUAT OLEH AHMAD RIJANI</div>
     </section>
 
     <section id="tab-kontak" class="tab-content">
       <h3 style="margin-top:0">Hubungi Kami</h3>
       <div id="listKontak"></div>
+
+      <!-- tambahkan info pembuat juga di kontak -->
+      <div style="margin-top:10px;">
+        <div class="contact-item" onclick="/* no action */">
+          <div class="icon-wrap"><i class="fa-solid fa-user" style="color:var(--accent)"></i></div>
+          <div>
+            <div style="font-weight:bold;">Ahmad Rijani</div>
+            <div style="font-size:12px; color:var(--text-muted)">Dibuat oleh Ahmad Rijani</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- credit di bawah tiap tab -->
+      <div class="site-credit">WEBSITE DI BUAT OLEH AHMAD RIJANI</div>
     </section>
 
   </main>
@@ -393,6 +440,9 @@
     <div class="label">Beli Sekarang</div>
     <i class="fa-solid fa-cart-shopping" style="font-size:22px;"></i>
   </div>
+
+  <!-- persistent page footer -->
+  <div class="page-footer">WEBSITE DI BUAT OLEH AHMAD RIJANI</div>
 
   <script src="settings.js"></script>
   <script src="link.js"></script>
@@ -429,7 +479,8 @@
       if(buttons[map[name]]) buttons[map[name]].classList.add('active');
 
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('open'));
-      document.getElementById('tab-' + name).classList.add('open');
+      const target = document.getElementById('tab-' + name);
+      if(target) target.classList.add('open');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       if(name === 'desain') loadDesain();
@@ -544,6 +595,7 @@
                 </div>
                 <div class="yt-body">
                   <h4 style="margin:0 0 10px 0; line-height:1.4">${vid.judul}</h4>
+                  <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">${vid.channel ? vid.channel : ''}</div>
                   <button class="btn btn-outline" onclick="goLink('${vid.url}')">
                     <i class="fa-brands fa-youtube"></i> Tonton Video
                   </button>
